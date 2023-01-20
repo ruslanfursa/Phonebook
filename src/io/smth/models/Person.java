@@ -1,6 +1,8 @@
 package io.smth.models;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     private final String name;
     private final String surname;
     private final String email;
