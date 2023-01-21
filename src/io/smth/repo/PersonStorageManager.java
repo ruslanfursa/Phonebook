@@ -5,5 +5,5 @@ import java.util.List;
 public interface PersonStorageManager {
     List<Person> loadData();
     void saveData(Person person);
-}
+   }
 

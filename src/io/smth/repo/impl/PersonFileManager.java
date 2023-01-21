@@ -4,14 +4,13 @@ import io.smth.repo.PersonStorageManager;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class PersonFileManager implements PersonStorageManager {
 
     @Override
     public List<Person> loadData() {
         ArrayList<Person> people = new ArrayList<>();
         try(FileReader fr = new FileReader("test.txt");
-        BufferedReader bf = new BufferedReader(fr)) {
+            BufferedReader bf = new BufferedReader(fr)) {
             String s = bf.readLine();
             while(s != null){
                 String[] strArray = s.split(",");
@@ -33,7 +32,7 @@ public class PersonFileManager implements PersonStorageManager {
 
     @Override
     public void saveData(Person person) {
-        try ( FileWriter fw = new FileWriter("test.txt", true)) {
+        try (FileWriter fw = new FileWriter("test.txt", true)) {
            String s = String.format("%s,%s,%s,%s\n", person.getName(), person.getSurname(),
                    person.getEmail(), person.getNumber());
            fw.append(s);
@@ -45,5 +44,7 @@ public class PersonFileManager implements PersonStorageManager {
         }
 
     }
+
+
 
 }
