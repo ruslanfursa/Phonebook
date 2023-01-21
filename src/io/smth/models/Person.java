@@ -30,7 +30,6 @@ public class Person implements Serializable {
     public String getNumber() {
         return number;
     }
-
     @Override
     public String toString(){
         return String.format("name: %s, surname: %s, email: %s, number: %s", name, surname, email, number);
