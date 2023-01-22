@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class UserInterface {
     PersonStorageManager personStorageManager;
 
@@ -30,7 +31,7 @@ public class UserInterface {
                 continue;
             }
             switch (inputValue) {
-                case 1 -> addNewPerson();
+                case 1 -> addNewPerson(scan);
                 case 2 -> printPersonList();
                 case 3 -> {
                     scan.close();
@@ -41,23 +42,37 @@ public class UserInterface {
         }
 
     }
-
-    private void addNewPerson() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Hello! Input the name of Person");
-        String inputName = sc.next();
-        System.out.println("Input the surname of Person");
-        String inputSurname = sc.next();
+    private String inputName(Scanner sc){
+        System.out.println("Input name of Person");
+        return sc.next();
+    }
+    private String inputSurname(Scanner sc){
+        System.out.println("Input surName of Person");
+        return sc.next();
+    }
+    private String inputEmail(Scanner sc){
         System.out.println("Input email of Person");
-        String inputEmail = sc.next();
+        return sc.next();
+    }
+    private String inputNumber(Scanner sc, Validation val){
         System.out.println("Input phone number of Person");
-        String inputNumber = sc.next();
-        Person any = new Person(inputName, inputSurname, inputEmail, inputNumber);
-        personStorageManager.saveData(any);
-        System.out.println(any + " was added to list");
-
+        String number = sc.next();
+        if(!val.numberValidation(number)){
+            inputNumber(sc, val);
+        }
+        return number;
     }
 
+    private void addNewPerson(Scanner scan) {
+        String name = inputName(scan);
+        String surname = inputSurname(scan);
+        String email = inputEmail(scan);
+        Validation val = new Validation();
+        String number = inputNumber(scan, val);
+        Person any = new Person(name, surname, email, number);
+        personStorageManager.saveData(any);
+        System.out.println(any + " was added to list");
+    }
     private void printPersonList() {
         List<Person> people = personStorageManager.loadData();
         for (Person p : people) {
