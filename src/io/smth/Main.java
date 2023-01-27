@@ -1,6 +1,7 @@
 package io.smth;
 
 import io.smth.repo.PersonStorageManager;
+import io.smth.repo.impl.PersonDBManager;
 import io.smth.repo.impl.PersonFileManager;
 import io.smth.ui.UserInterface;
 
