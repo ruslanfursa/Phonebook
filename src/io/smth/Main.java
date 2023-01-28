@@ -7,8 +7,9 @@ import io.smth.ui.UserInterface;
 
 public class Main {
     public static void main(String[] args) {
-        PersonStorageManager pfm = new PersonFileManager();
-        UserInterface uif = new UserInterface(pfm);
+        PersonStorageManager pdm = new PersonDBManager();
+        UserInterface uif = new UserInterface(pdm);
         uif.communication();
+        pdm.close();
     }
 }

@@ -23,7 +23,7 @@ public class PersonFileManager implements PersonStorageManager {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("Create file");
+            System.out.println("There are no contacts in list");
         } catch (IOException e) {
             System.out.println("Something went wrong");
         }
@@ -45,6 +45,10 @@ public class PersonFileManager implements PersonStorageManager {
 
     }
 
+    @Override
+    public void close() {
+
+    }
 
 
 }
